@@ -15,12 +15,23 @@ function startCountdown() {
   console.log("startCountdown called!");
 
   // Your code goes here ...
-
+  //disable start button
+  startButton.disabled = true;
   timer = setInterval(function () {
     if (remainingTime >= 0) {
       console.log(remainingTime);
       //show it in the div
       document.getElementById("time").textContent = remainingTime;
+      if (remainingTime === 10) {
+        console.log("⏰ Final countdown! ⏰");
+        showToast("⏰ Final countdown! ⏰");
+      } else if (remainingTime === 5) {
+        console.log("Start the engines! 💥");
+        showToast("Start the engines! 💥");
+      } else if (remainingTime === 0) {
+        console.log("Lift off! 🚀");
+        showToast("Lift off! 🚀");
+      }
       remainingTime--;
     } else {
       clearInterval(timer);
